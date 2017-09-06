@@ -979,6 +979,10 @@ func (e *Engine) UpdateNetworkContainers(containerID string, full bool) error {
 		if err != nil {
 			return err
 		}
+		// in case the container doesn't exist on the engine
+		if ctr == nil {
+			return nil
+		}
 		containerMap[containerID] = ctr
 	}
 
